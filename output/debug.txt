@@ -1,0 +1,131 @@
+=== Source Code ===
+int x;
+int y;
+x = 5;
+y = 10;
+print x;
+print y;
+if (x < y) {
+    print x;
+} else {
+    print y;
+}
+while (x < y) {
+    x = x + 1;
+    print x;
+}
+
+=== Three-Address Code ===
+t0 = 5
+x = t0
+t1 = 10
+y = t1
+t2 = x
+print t2
+t3 = y
+print t3
+t4 = x
+t5 = y
+t6 = t4 < t5
+t6 ifz goto L0
+t7 = x
+print t7
+goto L1
+L0:
+t8 = y
+print t8
+L1:
+L2:
+t9 = x
+t10 = y
+t11 = t9 < t10
+t11 ifz goto L3
+t12 = x
+t13 = 1
+t14 = t12 + t13
+x = t14
+t15 = x
+print t15
+goto L2
+L3:
+
+=== Optimized Code ===
+x = t0
+y = t1
+print x
+print y
+t6 ifz goto L0
+print x
+goto L1
+L0:
+print y
+L1:
+L2:
+t11 ifz goto L3
+x = t14
+print x
+goto L2
+L3:
+
+=== Assembly Code ===
+section .text
+global _start
+_start:
+mov eax, r0
+add eax, '0'
+push eax
+mov eax, 4
+mov ebx, 1
+mov ecx, esp
+mov edx, 1
+int 0x80
+add esp, 4
+mov eax, r1
+add eax, '0'
+push eax
+mov eax, 4
+mov ebx, 1
+mov ecx, esp
+mov edx, 1
+int 0x80
+add esp, 4
+cmp r2, 0
+je L0
+mov eax, r0
+add eax, '0'
+push eax
+mov eax, 4
+mov ebx, 1
+mov ecx, esp
+mov edx, 1
+int 0x80
+add esp, 4
+jmp L1
+L0:
+mov eax, r1
+add eax, '0'
+push eax
+mov eax, 4
+mov ebx, 1
+mov ecx, esp
+mov edx, 1
+int 0x80
+add esp, 4
+L1:
+L2:
+cmp r3, 0
+je L3
+mov eax, r0
+add eax, '0'
+push eax
+mov eax, 4
+mov ebx, 1
+mov ecx, esp
+mov edx, 1
+int 0x80
+add esp, 4
+jmp L2
+L3:
+mov eax, 1
+xor ebx, ebx
+int 0x80

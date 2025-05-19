@@ -1,0 +1,32 @@
+t0 = 5
+x = t0
+t1 = 10
+y = t1
+t2 = x
+print t2
+t3 = y
+print t3
+t4 = x
+t5 = y
+t6 = t4 < t5
+t6 ifz goto L0
+t7 = x
+print t7
+goto L1
+L0:
+t8 = y
+print t8
+L1:
+L2:
+t9 = x
+t10 = y
+t11 = t9 < t10
+t11 ifz goto L3
+t12 = x
+t13 = 1
+t14 = t12 + t13
+x = t14
+t15 = x
+print t15
+goto L2
+L3:

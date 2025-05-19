@@ -1,0 +1,16 @@
+x = t0
+y = t1
+print x
+print y
+t6 ifz goto L0
+print x
+goto L1
+L0:
+print y
+L1:
+L2:
+t11 ifz goto L3
+x = t14
+print x
+goto L2
+L3:
